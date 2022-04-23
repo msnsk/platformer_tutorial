@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Background/Green.png" type="Texture" id=1]
+[ext_resource path="res://UI/HUD/HUD.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Background/Pink.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Menu/Levels/01.png" type="Texture" id=4]
+[ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=5]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HUDHBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 20.0
+custom_constants/separation = 16
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthHBox" type="HBoxContainer" parent="HUDHBox"]
+margin_right = 150.0
+margin_bottom = 17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthText" type="Label" parent="HUDHBox/HealthHBox"]
+margin_top = 2.0
+margin_right = 46.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = "health"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HUDHBox/HealthHBox"]
+margin_left = 50.0
+margin_right = 150.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 100, 0 )
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.14902, 0.670588, 0.235294, 1 )
+nine_patch_stretch = true
+
+[node name="ScoreText" type="Label" parent="HUDHBox"]
+margin_left = 166.0
+margin_top = 2.0
+margin_right = 293.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "score 0"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelHBox" type="HBoxContainer" parent="HUDHBox"]
+margin_left = 309.0
+margin_right = 368.0
+margin_bottom = 17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelText" type="Label" parent="HUDHBox/LevelHBox"]
+margin_top = 2.0
+margin_right = 36.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = "level"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelTexture" type="TextureRect" parent="HUDHBox/LevelHBox"]
+margin_left = 40.0
+margin_right = 59.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 4 )

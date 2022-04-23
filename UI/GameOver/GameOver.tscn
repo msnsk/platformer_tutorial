@@ -1,0 +1,179 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/GameOver/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menu/Buttons/Close.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Background/Gray.png" type="Texture" id=3]
+[ext_resource path="res://fonts/poco/Poco.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Menu/Buttons/Restart.png" type="Texture" id=5]
+[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Audio/GameOver.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "blink_square"
+length = 2.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.894118, 0.290196, 0.290196, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GameOver" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 24
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="VBoxContainer"]
+modulate = Color( 0.894118, 0.290196, 0.290196, 1 )
+margin_top = 43.0
+margin_right = 384.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 3 )
+text = "game over"
+align = 1
+uppercase = true
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 384.0
+margin_bottom = 212.0
+custom_constants/separation = 48
+alignment = 1
+
+[node name="RestartVBox" type="VBoxContainer" parent="VBoxContainer/ButtonsHBox"]
+margin_left = 112.0
+margin_right = 168.0
+margin_bottom = 80.0
+alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="VBoxContainer/ButtonsHBox/RestartVBox"]
+margin_right = 56.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 56, 56 )
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="RestartLabel" type="Label" parent="VBoxContainer/ButtonsHBox/RestartVBox"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "restart"
+align = 1
+uppercase = true
+
+[node name="QuitVBox" type="VBoxContainer" parent="VBoxContainer/ButtonsHBox"]
+margin_left = 216.0
+margin_right = 272.0
+margin_bottom = 80.0
+alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer/ButtonsHBox/QuitVBox"]
+margin_right = 56.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 56, 56 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="QuitLabel" type="Label" parent="VBoxContainer/ButtonsHBox/QuitVBox"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "quit"
+align = 1
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -40.0
+margin_right = 125.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 50 )
+popup_exclusive = true
+window_title = "Confirmation"
+dialog_hide_on_ok = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 108, 128 )
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64, 0, -2 )
+width = 4.0
+default_color = Color( 0.916707, 0.441629, 0.441629, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Line2D"]
+anims/blink_square = SubResource( 4 )
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[connection signal="button_up" from="VBoxContainer/ButtonsHBox/RestartVBox/RestartButton" to="." method="_on_RestartButton_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/ButtonsHBox/RestartVBox/RestartButton" to="." method="_on_RestartButton_mouse_entered"]
+[connection signal="button_up" from="VBoxContainer/ButtonsHBox/QuitVBox/QuitButton" to="." method="_on_QuitButton_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/ButtonsHBox/QuitVBox/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="popup_hide" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_popup_hide"]

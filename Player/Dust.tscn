@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Other/Dust Particle.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=61]
+offsets = PoolRealArray( 0.0026738, 0.71123, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.313726, 1, 1, 1, 0.290196 )
+
+[sub_resource type="GradientTexture" id=62]
+gradient = SubResource( 61 )
+
+[sub_resource type="ParticlesMaterial" id=63]
+direction = Vector3( 0, -0.1, 0 )
+spread = 16.0
+gravity = Vector3( 0, -32, 0 )
+initial_velocity = 160.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 1, 1, 1, 0.627451 )
+color_ramp = SubResource( 62 )
+
+[node name="Dust" type="Particles2D"]
+z_index = -1
+amount = 4
+lifetime = 0.2
+speed_scale = 0.2
+process_material = SubResource( 63 )
+texture = ExtResource( 1 )

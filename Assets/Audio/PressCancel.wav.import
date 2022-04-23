@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PressCancel.wav-c7beca90765f5a03a4eaaf16e7ede61c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/PressCancel.wav"
+dest_files=[ "res://.import/PressCancel.wav-c7beca90765f5a03a4eaaf16e7ede61c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

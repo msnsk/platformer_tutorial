@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PressEnter.wav-5c9238e9e4a943e880e7c2d36fb055a3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/PressEnter.wav"
+dest_files=[ "res://.import/PressEnter.wav-5c9238e9e4a943e880e7c2d36fb055a3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
